@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ice Cream Order</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d14524;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 15px;
+      background-color: #d14524;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #b03a1d;
+    }
+
+    #orderList {
+      margin-top: 25px;
+    }
+
+    .order-item {
+      background: #fff3e0;
+      padding: 10px;
+      margin-top: 10px;
+      border-left: 5px solid #ff9800;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍨 Ice Cream Order Page</h1>
+
+  <div class="container">
+    <label for="flavor">Choose Flavor:</label>
+    <select id="flavor">
+      <option value="Vanilla">Vanilla</option>
+      <option value="Chocolate">Chocolate</option>
+      <option value="Strawberry">Strawberry</option>
+      <option value="Butterscotch">Butterscotch</option>
+      <option value="Mango">Mango</option>
+    </select>
+
+    <label for="quantity">Quantity:</label>
+    <input type="number" id="quantity" min="1" value="1" />
+
+    <label for="topping">Choose Topping:</label>
+    <select id="topping">
+      <option value="Nuts">Nuts</option>
+      <option value="Choco Chips">Choco Chips</option>
+      <option value="Caramel Syrup">Caramel Syrup</option>
+      <option value="No Topping">No Topping</option>
+    </select>
+
+    <button onclick="addOrder()">Add to Order</button>
+
+    <div id="orderList"></div>
+  </div>
+
+  <script>
+    const orderList = document.getElementById("orderList");
+
+    function addOrder() {
+      const flavor = document.getElementById("flavor").value;
+      const quantity = document.getElementById("quantity").value;
+      const topping = document.getElementById("topping").value;
+
+      if (quantity < 1) {
+        alert("Please enter valid quantity");
+        return;
+      }
+
+      const orderItem = document.createElement("div");
+      orderItem.classList.add("order-item");
+      orderItem.innerHTML = `
+        <strong>Flavor:</strong> ${flavor}<br>
+        <strong>Quantity:</strong> ${quantity}<br>
+        <strong>Topping:</strong> ${topping}
+      `;
+
+      orderList.appendChild(orderItem);
+    }
+  </script>
+</body>
+</html>
